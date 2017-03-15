@@ -32,4 +32,5 @@ bazel-bin/inception/flowers_train \
   --pretrained_model_checkpoint_path="${MODEL_PATH}" \
   --fine_tune=True \
   --initial_learning_rate=0.001 \
+  --max_steps=5000 \
   --input_queue_memory_factor=1
