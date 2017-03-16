@@ -1,3 +1,12 @@
+#!/bin/bash
+
+if [ $1 ];  then
+  ITERATIONS=$1
+else
+  echo $0": usage: ./run-traner.sh [iterations]"
+  exit 1
+fi
+
 curl -O http://download.tensorflow.org/models/image/imagenet/inception-v3-2016-03-01.tar.gz && \
 tar xzf inception-v3-2016-03-01.tar.gz && \
 ls inception-v3
@@ -32,5 +41,5 @@ bazel-bin/inception/flowers_train \
   --pretrained_model_checkpoint_path="${MODEL_PATH}" \
   --fine_tune=True \
   --initial_learning_rate=0.001 \
-  --max_steps=5000 \
+  --max_steps="${ITERATIONS}" \
   --input_queue_memory_factor=1
